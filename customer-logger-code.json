@@ -1,0 +1,300 @@
+{
+  "project": {
+    "name": "Customer Info Logger",
+    "version": "1.0.0",
+    "description": "A comprehensive customer information management system built with Next.js 15 and MongoDB Atlas",
+    "technology": {
+      "frontend": "Next.js 15 (App Router)",
+      "backend": "Next.js API Routes",
+      "database": "MongoDB Atlas",
+      "authentication": "JWT with bcryptjs",
+      "styling": "Custom CSS (No Tailwind)",
+      "fileFormat": "JavaScript (.js) only"
+    }
+  },
+  "package.json": {
+    "name": "finacustomer",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "dev": "next dev --turbopack",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+    },
+    "dependencies": {
+      "react": "19.1.0",
+      "react-dom": "19.1.0",
+      "next": "15.4.4",
+      "mongodb": "^6.3.0",
+      "bcryptjs": "^2.4.3",
+      "jsonwebtoken": "^9.0.2",
+      "cookies-next": "^4.1.1"
+    },
+    "devDependencies": {
+      "eslint": "^9",
+      "eslint-config-next": "15.4.4",
+      "@eslint/eslintrc": "^3"
+    }
+  },
+  "environment": {
+    ".env.local": {
+      "MONGODB_URI": "mongodb+srv://customer:1234@cluster0.1j6jp.mongodb.net/customer-logger?retryWrites=true&w=majority",
+      "MONGODB_DB": "customer-logger",
+      "JWT_SECRET": "your-super-secret-jwt-key-change-this-in-production",
+      "NODE_ENV": "development"
+    }
+  },
+  "database": {
+    "name": "customer-logger",
+    "collections": {
+      "admins": "Admin user accounts",
+      "users": "Regular user accounts",
+      "customers": "Customer information data"
+    },
+    "sampleData": {
+      "admin": {
+        "name": "Admin User",
+        "email": "admin@example.com",
+        "password": "admin123",
+        "role": "admin"
+      },
+      "user": {
+        "name": "Regular User",
+        "email": "user@example.com",
+        "password": "user123",
+        "role": "user"
+      },
+      "customers": [
+        {
+          "name": "John Smith",
+          "email": "john.smith@company.com",
+          "phone": "+1 (555) 123-4567",
+          "company": "Tech Solutions Inc.",
+          "position": "CEO",
+          "address": "123 Business St, New York, NY 10001",
+          "status": "active",
+          "notes": "Key decision maker for enterprise solutions"
+        },
+        {
+          "name": "Sarah Johnson",
+          "email": "sarah.johnson@startup.com",
+          "phone": "+1 (555) 234-5678",
+          "company": "Innovation Labs",
+          "position": "CTO",
+          "address": "456 Innovation Ave, San Francisco, CA 94102",
+          "status": "active",
+          "notes": "Interested in AI and machine learning solutions"
+        },
+        {
+          "name": "Michael Brown",
+          "email": "michael.brown@corp.com",
+          "phone": "+1 (555) 345-6789",
+          "company": "Global Enterprises",
+          "position": "IT Director",
+          "address": "789 Corporate Blvd, Chicago, IL 60601",
+          "status": "pending",
+          "notes": "Evaluating new software solutions"
+        },
+        {
+          "name": "Emily Davis",
+          "email": "emily.davis@consulting.com",
+          "phone": "+1 (555) 456-7890",
+          "company": "Strategic Consulting Group",
+          "position": "Senior Consultant",
+          "address": "321 Consulting Way, Boston, MA 02101",
+          "status": "inactive",
+          "notes": "Previous client, may re-engage in Q2"
+        },
+        {
+          "name": "David Wilson",
+          "email": "david.wilson@retail.com",
+          "phone": "+1 (555) 567-8901",
+          "company": "Retail Solutions LLC",
+          "position": "Operations Manager",
+          "address": "654 Retail Rd, Miami, FL 33101",
+          "status": "active",
+          "notes": "Looking for inventory management solutions"
+        }
+      ]
+    }
+  },
+  "fileStructure": {
+    "app/": {
+      "api/": {
+        "auth/": {
+          "login/route.js": "Authentication login endpoint",
+          "register/route.js": "User registration endpoint"
+        },
+        "customers/": {
+          "route.js": "CRUD operations for customers",
+          "[id]/route.js": "Individual customer operations"
+        },
+        "init/route.js": "Database initialization endpoint"
+      },
+      "admin/": {
+        "login/page.js": "Admin login page",
+        "register/page.js": "Admin registration page",
+        "dashboard/page.js": "Admin dashboard with analytics",
+        "create/page.js": "Create customer page",
+        "profile/page.js": "Admin profile page"
+      },
+      "user/": {
+        "userLogin/page.js": "User login page",
+        "register/page.js": "User registration page",
+        "listoflogger/page.js": "Customer list page",
+        "[id]/page.js": "Individual customer detail page",
+        "terms&Conditions/page.js": "Terms and conditions page",
+        "userProfile/page.js": "User profile page"
+      },
+      "components/": {
+        "Header.js": "Navigation header component",
+        "CustomerForm.js": "Customer form component",
+        "CustomerCard.js": "Customer display card component",
+        "RegisterForm.js": "Registration form component"
+      },
+      "lib/": {
+        "database.js": "MongoDB connection utility",
+        "init-db.js": "Database initialization script"
+      },
+      "globals.css": "Global CSS styles",
+      "layout.js": "Root layout component",
+      "page.js": "Home page"
+    },
+    "public/": "Static assets",
+    "package.json": "Dependencies and scripts",
+    "README.md": "Project documentation",
+    "setup.js": "Setup script"
+  },
+  "routes": {
+    "admin": {
+      "/admin/login": "Admin login page",
+      "/admin/register": "Admin registration page",
+      "/admin/dashboard": "Admin dashboard",
+      "/admin/create": "Create customer page",
+      "/admin/profile": "Admin profile page"
+    },
+    "user": {
+      "/user/userLogin": "User login page",
+      "/user/register": "User registration page",
+      "/user/listoflogger": "Customer list page",
+      "/user/[id]": "Individual customer page",
+      "/user/terms&Conditions": "Terms & conditions page",
+      "/user/userProfile": "User profile page"
+    },
+    "api": {
+      "POST /api/auth/login": "User authentication",
+      "POST /api/auth/register": "User registration",
+      "GET /api/customers": "Get all customers",
+      "POST /api/customers": "Create new customer",
+      "GET /api/customers/[id]": "Get specific customer",
+      "PUT /api/customers/[id]": "Update customer",
+      "DELETE /api/customers/[id]": "Delete customer",
+      "POST /api/init": "Initialize database"
+    }
+  },
+  "features": {
+    "authentication": {
+      "login": "JWT-based authentication",
+      "registration": "User and admin registration",
+      "passwordHashing": "bcryptjs password hashing",
+      "sessionManagement": "HTTP-only cookies"
+    },
+    "admin": {
+      "dashboard": "Customer analytics and statistics",
+      "createCustomer": "Add new customer records",
+      "editCustomer": "Modify existing customer data",
+      "deleteCustomer": "Remove customer records",
+      "profileManagement": "Admin account settings"
+    },
+    "user": {
+      "customerList": "View all customers with search and filter",
+      "customerDetails": "View detailed customer information",
+      "termsConditions": "Access application terms",
+      "userProfile": "Manage user account information"
+    },
+    "security": {
+      "inputValidation": "Server-side validation",
+      "emailUniqueness": "Prevent duplicate accounts",
+      "passwordStrength": "Minimum 6 characters",
+      "errorHandling": "Comprehensive error messages"
+    }
+  },
+  "styling": {
+    "framework": "Custom CSS (No Tailwind)",
+    "components": {
+      "header": "Gradient background with navigation",
+      "forms": "Styled input fields and validation",
+      "cards": "Customer information cards",
+      "buttons": "Primary, secondary, success, danger variants",
+      "alerts": "Success, error, warning, info messages"
+    },
+    "responsive": "Mobile-friendly design",
+    "colors": {
+      "primary": "Linear gradient (#667eea to #764ba2)",
+      "success": "#28a745",
+      "danger": "#dc3545",
+      "warning": "#ffc107",
+      "info": "#17a2b8"
+    }
+  },
+  "setup": {
+    "prerequisites": [
+      "Node.js 18+",
+      "MongoDB Atlas account",
+      "npm or yarn package manager"
+    ],
+    "installation": [
+      "Clone the repository",
+      "Install dependencies: npm install",
+      "Create .env.local with MongoDB connection",
+      "Run: npm run dev",
+      "Initialize database: POST /api/init"
+    ],
+    "defaultAccounts": {
+      "admin": "admin@example.com / admin123",
+      "user": "user@example.com / user123"
+    }
+  },
+  "deployment": {
+    "recommended": "Vercel",
+    "alternatives": [
+      "Netlify",
+      "Railway",
+      "DigitalOcean App Platform",
+      "AWS Amplify"
+    ],
+    "environmentVariables": [
+      "MONGODB_URI",
+      "MONGODB_DB",
+      "JWT_SECRET",
+      "NODE_ENV"
+    ]
+  },
+  "troubleshooting": {
+    "databaseConnection": [
+      "Verify MongoDB Atlas connection string",
+      "Check IP whitelist in MongoDB Atlas",
+      "Ensure database name is correct"
+    ],
+    "authentication": [
+      "Clear browser cookies",
+      "Verify JWT_SECRET is set",
+      "Check if user accounts exist"
+    ],
+    "buildErrors": [
+      "Ensure all dependencies are installed",
+      "Check for syntax errors",
+      "Verify environment variables"
+    ]
+  },
+  "development": {
+    "port": 3001,
+    "url": "http://localhost:3001",
+    "database": "MongoDB Atlas cluster0.1j6jp.mongodb.net",
+    "credentials": {
+      "username": "customer",
+      "password": "1234"
+    }
+  }
+} 

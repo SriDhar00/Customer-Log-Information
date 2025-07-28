@@ -117,7 +117,7 @@ export default function AdminLogin() {
           </form>
 
           <div className="text-center mt-3">
-            <p>Don't have an account?</p>
+            <p>Don&apos;t have an account?</p>
             <Link href="/admin/register" className="btn btn-success mb-2">
               Register as Admin
             </Link>
